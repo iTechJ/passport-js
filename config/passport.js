@@ -1,11 +1,11 @@
-const LocalStrategy = require('passport-local').Strategy;
-const FacebookStrategy = require('passport-facebook').Strategy;
-const TwitterStrategy = require('passport-twitter').Strategy;
-const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
-const User = require('../models/user');
-const configAuth = require('./auth');
+import {Strategy as LocalStrategy} from 'passport-local';
+import {Strategy as FacebookStrategy} from 'passport-facebook';
+import {Strategy as TwitterStrategy} from 'passport-twitter';
+import {OAuth2Strategy as GoogleStrategy} from 'passport-google-oauth';
+import User from '../models/user';
+import configAuth from './auth';
 
-module.exports = passport => {
+export default passport => {
 
   passport.serializeUser((user, done) => {
     done(null, user.id);

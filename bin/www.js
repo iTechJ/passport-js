@@ -4,9 +4,10 @@
  * Module dependencies.
  */
 
-const app = require('../app');
+import app from '../app';
+
 const debug = require('debug')('express-authentication:server');
-const http = require('http');
+import http from 'http';
 
 /**
  * Get port from environment and store in Express.

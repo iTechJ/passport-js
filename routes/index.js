@@ -1,5 +1,5 @@
-const express = require('express');
-const passport = require('passport');
+import express from 'express';
+import passport from 'passport';
 const router = express.Router();
 
 router.get('/', (req, res, next) => {
@@ -56,7 +56,7 @@ router.get('/auth/google/callback', passport.authenticate('google', {
   failureRedirect: '/',
 }));
 
-module.exports = router;
+export default router;
 
 function isLoggedIn(req, res, next) {
   if (req.isAuthenticated())

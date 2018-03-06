@@ -1,22 +1,19 @@
-const express = require('express');
-const path = require('path');
-const favicon = require('serve-favicon');
-const logger = require('morgan');
-const cookieParser = require('cookie-parser');
-const bodyParser = require('body-parser');
-require('dotenv').config();
+import express from 'express';
+import path from 'path';
+import logger from 'morgan';
+import cookieParser from 'cookie-parser';
+import bodyParser from 'body-parser';
+import passport from 'passport';
+import mongoose from 'mongoose';
+import flash from 'connect-flash';
+import session from 'express-session';
+import {} from 'dotenv/config'
 
-const passport = require('passport');
+import routes from './routes/index';
+import users from './routes/users';
+import configDB from './config/database.js';
+import initPassport from './config/passport.js';
 
-const mongoose = require('mongoose');
-
-const flash = require('connect-flash');
-const session = require('express-session');
-
-const routes = require('./routes/index');
-const users = require('./routes/users');
-
-const configDB = require('./config/database.js');
 mongoose.connect(configDB.url, {
     useMongoClient: true,
     promiseLibrary: global.Promise
@@ -39,7 +36,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 
-require('./config/passport')(passport);
+initPassport(passport);
 
 app.use('/', routes);
 app.use('/users', users);
@@ -68,4 +65,4 @@ app.use((err, req, res, next) => {
   });
 });
 
-module.exports = app;
+export default app;
