@@ -4,12 +4,11 @@ const favicon = require('serve-favicon');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
-require('dotenv').config()
+require('dotenv').config();
 
 const passport = require('passport');
 
 const mongoose = require('mongoose');
-mongoose.Promise = global.Promise;
 
 const flash = require('connect-flash');
 const session = require('express-session');
@@ -18,7 +17,10 @@ const routes = require('./routes/index');
 const users = require('./routes/users');
 
 const configDB = require('./config/database.js');
-mongoose.connect(configDB.url, {useMongoClient: true});
+mongoose.connect(configDB.url, {
+    useMongoClient: true,
+    promiseLibrary: global.Promise
+});
 
 const app = express();
 
