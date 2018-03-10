@@ -3,21 +3,24 @@ import path from 'path';
 import logger from 'morgan';
 import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
-import passport from 'passport';
 import mongoose from 'mongoose';
 import flash from 'connect-flash';
 import session from 'express-session';
 import {} from 'dotenv/config'
 
 import routes from './routes/index';
-import users from './routes/users';
-import configDB from './config/database.js';
-import initPassport from './config/passport.js';
+import api from './routes/api';
+import configDB from './config/database';
+import passport from 'passport'
+import './config/passport';
 
 mongoose.connect(configDB.url, {
-    useMongoClient: true,
-    promiseLibrary: global.Promise
+    useMongoClient: true
 });
+
+mongoose.Promise = global.Promise;
+
+mongoose.set('debug', true);
 
 const app = express();
 
@@ -36,16 +39,18 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 
-initPassport(passport);
-
 app.use('/', routes);
-app.use('/users', users);
+app.use('/api', api);
 
 app.use((req, res, next) => {
   const err = new Error('Not Found');
   err.status = 404;
   next(err);
 });
+
+mongoose.Promise = global.Promise;
+
+mongoose.set('debug', true);
 
 if (app.get('env') === 'development') {
   app.use((err, req, res, next) => {
@@ -64,5 +69,6 @@ app.use((err, req, res, next) => {
     error: {},
   });
 });
+mongoose.set('debug', true);
 
 export default app;

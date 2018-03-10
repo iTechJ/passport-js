@@ -14,4 +14,9 @@ export default {
     clientSecret: process.env.GOOGLE_SECRET,
     callbackURL: process.env.GOOGLE_URL,
   },
+  JWT: {
+    secret: process.env.SECRET_JWT,
+    live: process.env.JWT_LIVE
+  }
+
 };

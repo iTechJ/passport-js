@@ -1,0 +1,43 @@
+<% include partials/head %>
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<script src="/js/google.js" async defer></script>
+<script src="/js/facebook.js" async defer></script>
+<body>
+<div class="col-sm-8 col-sm-offset-2">
+  <div class="jumbotron text-center">
+    <h1>Client social network auth</h1>
+
+    <div class="row social-api-buttons">
+      <div class="col-xs-6">
+        <div class="g-signin2 google-api-button" data-onsuccess="onGoogleSignIn"></div>
+      </div>
+      <div class="col-xs-6">
+        <div class="fb-login-button" data-max-rows="1" data-size="medium" data-button-type="login_with"
+             data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"
+             onlogin="checkLoginState">
+        </div>
+      </div>
+      <div class="col-xs-4">
+
+      </div>
+    </div>
+
+    <div id="status">
+    </div>
+
+    <div class="form-group">
+      <label>Token</label>
+      <input type="text" class="form-control" name="token"/>
+    </div>
+    <div class="form-group">
+      <label>Token</label>
+      <input type="text" class="form-control" name="name" disabled/>
+    </div>
+    <div class="form-group">
+      <label>Token</label>
+      <input type="text" class="form-control" name="email" disabled/>
+    </div>
+  </div>
+</div>
+</body>
+</html>

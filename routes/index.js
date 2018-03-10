@@ -6,6 +6,10 @@ router.get('/', (req, res, next) => {
   res.render('index', { title: 'Express' });
 });
 
+router.get('/api', (req, res, next) => {
+  res.render('api.ejs', { message: req.flash('loginMessage') });
+});
+
 router.get('/login', (req, res, next) => {
   res.render('login.ejs', { message: req.flash('loginMessage') });
 });
@@ -50,6 +54,11 @@ router.get('/auth/twitter/callback', passport.authenticate('twitter', {
 }));
 
 router.get('/auth/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
+
+router.get('/auth/google/callback', passport.authenticate('google', {
+  successRedirect: '/profile',
+  failureRedirect: '/',
+}));
 
 router.get('/auth/google/callback', passport.authenticate('google', {
   successRedirect: '/profile',
