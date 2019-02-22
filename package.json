@@ -16,13 +16,13 @@
     "express": "^4.16.2",
     "express-session": "^1.15.6",
     "jsonwebtoken": "^8.2.0",
-    "mongoose": "^4.13.0",
-    "morgan": "^1.9.0",
+    "mongoose": "^5.4.14",
+    "morgan": "^1.9.1",
     "passport": "^0.4.0",
     "passport-facebook": "^2.0.0",
     "passport-facebook-token": "^3.3.0",
     "passport-google-oauth": "^1.0.0",
-    "passport-jwt": "^3.0.1",
+    "passport-jwt": "^4.0.0",
     "passport-local": "~1.0.0",
     "passport-token-google": "^0.1.1",
     "passport-twitter": "^1.0.3",
@@ -30,7 +30,7 @@
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.6.1",
-    "nodemon": "^1.17.1"
+    "babel-preset-env": "^1.7.0",
+    "nodemon": "^1.18.10"
   }
 }

@@ -14,9 +14,7 @@ import configDB from './config/database';
 import passport from 'passport'
 import './config/passport';
 
-mongoose.connect(configDB.url, {
-    useMongoClient: true
-});
+mongoose.connect(configDB.url, {});
 
 mongoose.Promise = global.Promise;
 
